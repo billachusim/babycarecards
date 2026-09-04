@@ -63,4 +63,4 @@ Disallow: /care/
 Disallow: /children/
 Disallow: /c/
 
-Sitemap: https://babycarecards.app/sitemap.xml
+Sitemap: https://baby-care-share.lovable.app/sitemap.xml
