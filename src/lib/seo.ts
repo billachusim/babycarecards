@@ -3,7 +3,7 @@
  * authoritative site origin here.
  */
 export const SITE_URL = (
-  import.meta.env["VITE_SITE_URL"] ?? "https://babycarecards.app"
+  import.meta.env["VITE_SITE_URL"] ?? "https://baby-care-share.lovable.app"
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "Baby Care Cards";

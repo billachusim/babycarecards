@@ -2,8 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
 import { GUIDES } from "@/features/guides/guides-data";
+import { SITE_URL } from "@/lib/seo";
 
-const BASE_URL = "https://babycarecards.app";
+const BASE_URL = SITE_URL;
 
 interface SitemapEntry {
   path: string;
