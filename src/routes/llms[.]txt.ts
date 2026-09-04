@@ -3,7 +3,7 @@ import type {} from "@tanstack/react-start";
 
 import { GUIDES } from "@/features/guides/guides-data";
 
-const BASE_URL = "https://babycarecards.app";
+const BASE_URL = SITE_URL;
 
 export const Route = createFileRoute("/llms.txt")({
   server: {
