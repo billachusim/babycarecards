@@ -1,0 +1,218 @@
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { ArrowLeft, Bell, Download, FileText, Pencil, Printer, QrCode, Share2 } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
+
+import { AppShell } from "@/components/app/app-shell";
+import { Button } from "@/components/ui/button";
+import { CareCardView } from "@/features/care-card/components/care-card-view";
+import { useCareStore } from "@/features/children/hooks/use-care-store";
+import { generateCareCardPdf, pdfFileName } from "@/features/pdf/care-card-pdf";
+import { PaywallDialog } from "@/features/premium/components/paywall-dialog";
+import {
+  downloadDataUrl,
+  shareFile,
+  shareLink,
+} from "@/features/sharing/care-card-sharing-service";
+import { useShareLink } from "@/features/sharing/use-share-link";
+import { firstError } from "@/lib/validation";
+
+export const Route = createFileRoute("/care/$childId")({
+  head: () => ({
+    meta: [
+      { name: "robots", content: "noindex, nofollow" },
+      { title: "Care Card — Baby Care Cards" },
+      {
+        name: "description",
+        content:
+          "A complete, glanceable care card: about, feeding, routine, medication, emergency contacts and pediatrician details.",
+      },
+      { property: "og:title", content: "Baby Care Cards" },
+      {
+        property: "og:description",
+        content: "Everything a caregiver needs to look after this child.",
+      },
+    ],
+  }),
+  component: CareCardPage,
+});
+
+function CareCardPage() {
+  const { childId } = Route.useParams();
+  const navigate = useNavigate();
+  const { ready, buildCareCard, isPremium } = useCareStore();
+  const [paywallOpen, setPaywallOpen] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const share = useShareLink(childId);
+  const card = buildCareCard(childId);
+
+  if (!ready) {
+    return (
+      <AppShell>
+        <div className="h-96 animate-pulse rounded-3xl bg-card" aria-label="Loading" />
+      </AppShell>
+    );
+  }
+
+  if (!card) {
+    return (
+      <AppShell>
+        <h1 className="font-display text-2xl font-semibold">This care card isn&apos;t here.</h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Care cards are stored on the device that created them. Ask the owner to share the card
+          again, or create your own.
+        </p>
+        <Button className="mt-6 rounded-xl" onClick={() => void navigate({ to: "/" })}>
+          Go home
+        </Button>
+      </AppShell>
+    );
+  }
+
+  const requirePremium = (action: () => void) => {
+    if (!isPremium) {
+      setPaywallOpen(true);
+      return;
+    }
+    action();
+  };
+
+  const handleShare = async () => {
+    try {
+      // Signed-in owners get a link anyone can open; otherwise the card stays
+      // on this device and the link only works here.
+      const url = share.signedIn ? await share.publish(card) : share.url;
+      const result = await shareLink(
+        `${card.child.name}'s Care Card`,
+        `Everything you need to look after ${card.child.name}.`,
+        url,
+      );
+      if (result.method === "clipboard") toast.success("Link copied to your clipboard.");
+      if (result.method === "unsupported")
+        toast.error("Sharing isn't available in this browser. Copy the address bar link instead.");
+    } catch (error) {
+      toast.error(firstError(error));
+    }
+  };
+
+  const handleStopSharing = async () => {
+    try {
+      await share.stopSharing();
+      toast.success("That link no longer opens this card.");
+    } catch (error) {
+      toast.error(firstError(error));
+    }
+  };
+
+  const handlePdf = async (mode: "download" | "share") => {
+    setBusy(true);
+    try {
+      const blob = await generateCareCardPdf(card);
+      const filename = pdfFileName(card.child.name);
+      if (mode === "share") {
+        const file = new File([blob], filename, { type: "application/pdf" });
+        const result = await shareFile(file, `${card.child.name}'s Care Card`, "Care instructions");
+        if (result.method === "unsupported") {
+          downloadDataUrl(URL.createObjectURL(blob), filename);
+          toast.success("Your browser can't share files, so we downloaded the PDF instead.");
+        }
+        return;
+      }
+      downloadDataUrl(URL.createObjectURL(blob), filename);
+      toast.success("PDF saved.");
+    } catch (error) {
+      toast.error(firstError(error));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <AppShell>
+      <PaywallDialog open={paywallOpen} onOpenChange={setPaywallOpen} />
+
+      <div className="no-print mb-4 flex items-center justify-between">
+        <Button variant="ghost" className="-ml-2 rounded-xl" onClick={() => void navigate({ to: "/" })}>
+          <ArrowLeft className="size-4" aria-hidden="true" /> Back
+        </Button>
+        <Button asChild variant="ghost" className="rounded-xl">
+          <Link to="/children/$childId/edit" params={{ childId }}>
+            <Pencil className="size-4" aria-hidden="true" /> Edit
+          </Link>
+        </Button>
+      </div>
+
+      <CareCardView card={card} />
+
+      <div id="share" className="no-print mt-8 space-y-3">
+        <h2 className="font-display text-lg font-semibold">Share this card</h2>
+        <div className="grid gap-2 sm:grid-cols-2">
+          <Button className="h-12 rounded-xl" onClick={() => void handleShare()}>
+            <Share2 className="size-4" aria-hidden="true" /> Share Care Card
+          </Button>
+          <Button asChild variant="secondary" className="h-12 rounded-xl">
+            <Link to="/care/$childId/qr" params={{ childId }}>
+              <QrCode className="size-4" aria-hidden="true" /> QR Code
+            </Link>
+          </Button>
+          <Button
+            variant="secondary"
+            className="h-12 rounded-xl"
+            disabled={busy}
+            onClick={() => requirePremium(() => window.print())}
+          >
+            <Printer className="size-4" aria-hidden="true" /> Print
+          </Button>
+          <Button
+            variant="secondary"
+            className="h-12 rounded-xl"
+            disabled={busy}
+            onClick={() => requirePremium(() => void handlePdf("download"))}
+          >
+            <Download className="size-4" aria-hidden="true" />
+            {busy ? "Preparing…" : "Download PDF"}
+          </Button>
+          <Button
+            variant="secondary"
+            className="h-12 rounded-xl"
+            disabled={busy}
+            onClick={() => requirePremium(() => void handlePdf("share"))}
+          >
+            <FileText className="size-4" aria-hidden="true" /> Share PDF
+          </Button>
+          <Button asChild variant="secondary" className="h-12 rounded-xl">
+            <Link to="/reminders">
+              <Bell className="size-4" aria-hidden="true" /> Reminders
+            </Link>
+          </Button>
+        </div>
+        {share.signedIn ? (
+          <div className="space-y-2">
+            <p className="text-xs text-muted-foreground">
+              {share.token
+                ? "This card has a live link. Anyone with it — on WhatsApp, email or the QR code — can open the card on any device. Sharing again refreshes it with your latest details."
+                : "Sharing publishes a copy of this card to your account so a sitter can open it on their own phone."}
+            </p>
+            {share.token ? (
+              <Button
+                variant="ghost"
+                className="h-9 rounded-xl px-2 text-xs"
+                onClick={() => void handleStopSharing()}
+              >
+                Stop sharing this link
+              </Button>
+            ) : null}
+          </div>
+        ) : (
+          <p className="text-xs text-muted-foreground">
+            This card lives on this device, so the link only opens here.{" "}
+            <Link to="/settings" className="underline">
+              Sign in and turn on backup
+            </Link>{" "}
+            to share a link a sitter can open anywhere.
+          </p>
+        )}
+      </div>
+    </AppShell>
+  );
+}

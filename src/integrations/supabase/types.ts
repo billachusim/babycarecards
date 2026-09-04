@@ -1,0 +1,697 @@
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
+
+export type Database = {
+  // Allows to automatically instantiate createClient with right options
+  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+  __InternalSupabase: {
+    PostgrestVersion: "14.5"
+  }
+  public: {
+    Tables: {
+      backup_children: {
+        Row: {
+          age_group: string | null
+          allergies: string | null
+          approximate_age: string | null
+          created_at: string
+          date_of_birth: string | null
+          id: string
+          name: string
+          personality: string | null
+          photo_data_url: string | null
+          sex: string | null
+          things_to_know: string | null
+          updated_at: string
+          user_id: string
+          weight: string | null
+        }
+        Insert: {
+          age_group?: string | null
+          allergies?: string | null
+          approximate_age?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          id: string
+          name: string
+          personality?: string | null
+          photo_data_url?: string | null
+          sex?: string | null
+          things_to_know?: string | null
+          updated_at?: string
+          user_id: string
+          weight?: string | null
+        }
+        Update: {
+          age_group?: string | null
+          allergies?: string | null
+          approximate_age?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          id?: string
+          name?: string
+          personality?: string | null
+          photo_data_url?: string | null
+          sex?: string | null
+          things_to_know?: string | null
+          updated_at?: string
+          user_id?: string
+          weight?: string | null
+        }
+        Relationships: []
+      }
+      backup_emergency_contacts: {
+        Row: {
+          child_id: string
+          created_at: string
+          id: string
+          primary_name: string | null
+          primary_phone: string | null
+          secondary_name: string | null
+          secondary_phone: string | null
+          special_instructions: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          id: string
+          primary_name?: string | null
+          primary_phone?: string | null
+          secondary_name?: string | null
+          secondary_phone?: string | null
+          special_instructions?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          id?: string
+          primary_name?: string | null
+          primary_phone?: string | null
+          secondary_name?: string | null
+          secondary_phone?: string | null
+          special_instructions?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      backup_feedings: {
+        Row: {
+          amount: string | null
+          child_id: string
+          created_at: string
+          food_name: string | null
+          foods_to_avoid: string | null
+          id: string
+          meals_per_day: string | null
+          notes: string | null
+          snacks: string | null
+          times: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount?: string | null
+          child_id: string
+          created_at?: string
+          food_name?: string | null
+          foods_to_avoid?: string | null
+          id: string
+          meals_per_day?: string | null
+          notes?: string | null
+          snacks?: string | null
+          times?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: string | null
+          child_id?: string
+          created_at?: string
+          food_name?: string | null
+          foods_to_avoid?: string | null
+          id?: string
+          meals_per_day?: string | null
+          notes?: string | null
+          snacks?: string | null
+          times?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      backup_medications: {
+        Row: {
+          child_id: string
+          created_at: string
+          dosage: string | null
+          end_date: string | null
+          frequency: string | null
+          id: string
+          name: string
+          notes: string | null
+          start_date: string | null
+          time: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          dosage?: string | null
+          end_date?: string | null
+          frequency?: string | null
+          id: string
+          name: string
+          notes?: string | null
+          start_date?: string | null
+          time?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          dosage?: string | null
+          end_date?: string | null
+          frequency?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          start_date?: string | null
+          time?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      backup_pediatricians: {
+        Row: {
+          address: string | null
+          child_id: string
+          clinic_name: string | null
+          created_at: string
+          doctor_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          address?: string | null
+          child_id: string
+          clinic_name?: string | null
+          created_at?: string
+          doctor_name?: string | null
+          id: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          address?: string | null
+          child_id?: string
+          clinic_name?: string | null
+          created_at?: string
+          doctor_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      backup_reminders: {
+        Row: {
+          child_id: string
+          created_at: string
+          enabled: boolean
+          end_date: string | null
+          id: string
+          repeat: string
+          start_date: string | null
+          time: string
+          title: string
+          type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          enabled?: boolean
+          end_date?: string | null
+          id: string
+          repeat?: string
+          start_date?: string | null
+          time: string
+          title: string
+          type?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          enabled?: boolean
+          end_date?: string | null
+          id?: string
+          repeat?: string
+          start_date?: string | null
+          time?: string
+          title?: string
+          type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      backup_routines: {
+        Row: {
+          child_id: string
+          created_at: string
+          diapering_routine: string | null
+          id: string
+          other: string | null
+          outdoor_time: string | null
+          playtime: string | null
+          screen_time_notes: string | null
+          sleep_routine: string | null
+          soothing_instructions: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          diapering_routine?: string | null
+          id: string
+          other?: string | null
+          outdoor_time?: string | null
+          playtime?: string | null
+          screen_time_notes?: string | null
+          sleep_routine?: string | null
+          soothing_instructions?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          diapering_routine?: string | null
+          id?: string
+          other?: string | null
+          outdoor_time?: string | null
+          playtime?: string | null
+          screen_time_notes?: string | null
+          sleep_routine?: string | null
+          soothing_instructions?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      generated_guides: {
+        Row: {
+          answer: string
+          created_at: string
+          description: string
+          faqs: Json
+          id: string
+          intro: Json
+          medical_disclaimer: boolean
+          meta_title: string
+          model: string | null
+          published_at: string
+          read_minutes: number
+          related: Json
+          sections: Json
+          slug: string
+          status: string
+          title: string
+          topic: string | null
+          updated_at: string
+        }
+        Insert: {
+          answer: string
+          created_at?: string
+          description: string
+          faqs?: Json
+          id?: string
+          intro?: Json
+          medical_disclaimer?: boolean
+          meta_title: string
+          model?: string | null
+          published_at?: string
+          read_minutes?: number
+          related?: Json
+          sections?: Json
+          slug: string
+          status?: string
+          title: string
+          topic?: string | null
+          updated_at?: string
+        }
+        Update: {
+          answer?: string
+          created_at?: string
+          description?: string
+          faqs?: Json
+          id?: string
+          intro?: Json
+          medical_disclaimer?: boolean
+          meta_title?: string
+          model?: string | null
+          published_at?: string
+          read_minutes?: number
+          related?: Json
+          sections?: Json
+          slug?: string
+          status?: string
+          title?: string
+          topic?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      guide_generation_runs: {
+        Row: {
+          attempts: number
+          error: string | null
+          finished_at: string | null
+          id: string
+          slug: string | null
+          started_at: string
+          status: string
+          topic: string | null
+        }
+        Insert: {
+          attempts?: number
+          error?: string | null
+          finished_at?: string | null
+          id?: string
+          slug?: string | null
+          started_at?: string
+          status?: string
+          topic?: string | null
+        }
+        Update: {
+          attempts?: number
+          error?: string | null
+          finished_at?: string | null
+          id?: string
+          slug?: string | null
+          started_at?: string
+          status?: string
+          topic?: string | null
+        }
+        Relationships: []
+      }
+      guide_job_state: {
+        Row: {
+          id: string
+          job_token: string
+          last_run_at: string | null
+          lease_until: string | null
+          pause_reason: string | null
+          paused: boolean
+          paused_at: string | null
+          updated_at: string
+        }
+        Insert: {
+          id: string
+          job_token?: string
+          last_run_at?: string | null
+          lease_until?: string | null
+          pause_reason?: string | null
+          paused?: boolean
+          paused_at?: string | null
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          job_token?: string
+          last_run_at?: string | null
+          lease_until?: string | null
+          pause_reason?: string | null
+          paused?: boolean
+          paused_at?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      lifetime_purchases: {
+        Row: {
+          created_at: string
+          email: string
+          environment: string
+          id: string
+          price_id: string
+          product_id: string
+          provider_customer_id: string | null
+          provider_transaction_id: string
+          purchased_at: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          environment?: string
+          id?: string
+          price_id: string
+          product_id: string
+          provider_customer_id?: string | null
+          provider_transaction_id: string
+          purchased_at?: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          environment?: string
+          id?: string
+          price_id?: string
+          product_id?: string
+          provider_customer_id?: string | null
+          provider_transaction_id?: string
+          purchased_at?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          backup_enabled: boolean
+          caregiver_name: string | null
+          caregiver_notes: string | null
+          caregiver_phone: string | null
+          created_at: string
+          email: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          backup_enabled?: boolean
+          caregiver_name?: string | null
+          caregiver_notes?: string | null
+          caregiver_phone?: string | null
+          created_at?: string
+          email?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          backup_enabled?: boolean
+          caregiver_name?: string | null
+          caregiver_notes?: string | null
+          caregiver_phone?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      shared_cards: {
+        Row: {
+          child_id: string
+          child_name: string
+          created_at: string
+          revoked: boolean
+          snapshot: Json
+          token: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          child_id: string
+          child_name?: string
+          created_at?: string
+          revoked?: boolean
+          snapshot: Json
+          token: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          child_id?: string
+          child_name?: string
+          created_at?: string
+          revoked?: boolean
+          snapshot?: Json
+          token?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
+}
+
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
+
+type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
+
+export type Tables<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    : never) = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+      Row: infer R
+    }
+    ? R
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
+        Row: infer R
+      }
+      ? R
+      : never
+    : never
+
+export type TablesInsert<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never) = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Insert: infer I
+    }
+    ? I
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Insert: infer I
+      }
+      ? I
+      : never
+    : never
+
+export type TablesUpdate<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never) = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Update: infer U
+    }
+    ? U
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Update: infer U
+      }
+      ? U
+      : never
+    : never
+
+export type Enums<
+  DefaultSchemaEnumNameOrOptions extends
+    | keyof DefaultSchema["Enums"]
+    | { schema: keyof DatabaseWithoutInternals },
+  EnumName extends (DefaultSchemaEnumNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    : never) = never,
+> = DefaultSchemaEnumNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof DefaultSchema["CompositeTypes"]
+    | { schema: keyof DatabaseWithoutInternals },
+  CompositeTypeName extends (PublicCompositeTypeNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never) = never,
+> = PublicCompositeTypeNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+    : never
+
+export const Constants = {
+  public: {
+    Enums: {},
+  },
+} as const
