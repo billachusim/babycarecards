@@ -1,14 +1,66 @@
-User-agent: Googlebot
+User-agent: *
 Allow: /
+Disallow: /care/
+Disallow: /children/
+Disallow: /c/
+Disallow: /settings
+Disallow: /reminders
+Disallow: /premium
+Disallow: /onboarding
+
+# AI assistants and AI search crawlers are welcome on the public pages.
+User-agent: GPTBot
+Allow: /
+Disallow: /care/
+Disallow: /children/
+Disallow: /c/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /care/
+Disallow: /children/
+Disallow: /c/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /care/
+Disallow: /children/
+Disallow: /c/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /care/
+Disallow: /children/
+Disallow: /c/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /care/
+Disallow: /children/
+Disallow: /c/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /care/
+Disallow: /children/
+Disallow: /c/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /care/
+Disallow: /children/
+Disallow: /c/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /care/
+Disallow: /children/
+Disallow: /c/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /care/
+Disallow: /children/
+Disallow: /c/
 
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: *
-Allow: /
+Sitemap: https://babycarecards.app/sitemap.xml

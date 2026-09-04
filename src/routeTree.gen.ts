@@ -10,33 +10,377 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as PremiumRouteImport } from './routes/premium'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as RefundsRouteImport } from './routes/refunds'
+import { Route as RemindersRouteImport } from './routes/reminders'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as TalkAboutYourChildRouteImport } from './routes/talk-about-your-child'
+import { Route as TemplatesRouteImport } from './routes/templates'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as CTokenRouteImport } from './routes/c.$token'
+import { Route as CareChildIdRouteImport } from './routes/care.$childId'
+import { Route as ChildrenNewRouteImport } from './routes/children.new'
+import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
+import { Route as ToolsFeedingCalculatorRouteImport } from './routes/tools.feeding-calculator'
+import { Route as CareChildIdQrRouteImport } from './routes/care.$childId.qr'
+import { Route as ChildrenChildIdEditRouteImport } from './routes/children.$childId.edit'
+import { Route as ChildrenChildIdMedicationsRouteImport } from './routes/children.$childId.medications'
+import { Route as ApiPublicHooksWeeklyGuideRouteImport } from './routes/api/public/hooks/weekly-guide'
+import { Route as ApiPublicPaymentsWebhookRouteImport } from './routes/api/public/payments/webhook'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PremiumRoute = PremiumRouteImport.update({
+  id: '/premium',
+  path: '/premium',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundsRoute = RefundsRouteImport.update({
+  id: '/refunds',
+  path: '/refunds',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RemindersRoute = RemindersRouteImport.update({
+  id: '/reminders',
+  path: '/reminders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TalkAboutYourChildRoute = TalkAboutYourChildRouteImport.update({
+  id: '/talk-about-your-child',
+  path: '/talk-about-your-child',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemplatesRoute = TemplatesRouteImport.update({
+  id: '/templates',
+  path: '/templates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CTokenRoute = CTokenRouteImport.update({
+  id: '/c/$token',
+  path: '/c/$token',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareChildIdRoute = CareChildIdRouteImport.update({
+  id: '/care/$childId',
+  path: '/care/$childId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChildrenNewRoute = ChildrenNewRouteImport.update({
+  id: '/children/new',
+  path: '/children/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/guides/',
+  path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/guides/$slug',
+  path: '/guides/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsFeedingCalculatorRoute = ToolsFeedingCalculatorRouteImport.update({
+  id: '/tools/feeding-calculator',
+  path: '/tools/feeding-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareChildIdQrRoute = CareChildIdQrRouteImport.update({
+  id: '/qr',
+  path: '/qr',
+  getParentRoute: () => CareChildIdRoute,
+} as any)
+const ChildrenChildIdEditRoute = ChildrenChildIdEditRouteImport.update({
+  id: '/children/$childId/edit',
+  path: '/children/$childId/edit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChildrenChildIdMedicationsRoute =
+  ChildrenChildIdMedicationsRouteImport.update({
+    id: '/children/$childId/medications',
+    path: '/children/$childId/medications',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicHooksWeeklyGuideRoute =
+  ApiPublicHooksWeeklyGuideRouteImport.update({
+    id: '/api/public/hooks/weekly-guide',
+    path: '/api/public/hooks/weekly-guide',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicPaymentsWebhookRoute =
+  ApiPublicPaymentsWebhookRouteImport.update({
+    id: '/api/public/payments/webhook',
+    path: '/api/public/payments/webhook',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/llms.txt': typeof LlmsDottxtRoute
+  '/onboarding': typeof OnboardingRoute
+  '/premium': typeof PremiumRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/refunds': typeof RefundsRoute
+  '/reminders': typeof RemindersRoute
+  '/settings': typeof SettingsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/talk-about-your-child': typeof TalkAboutYourChildRoute
+  '/templates': typeof TemplatesRoute
+  '/terms': typeof TermsRoute
+  '/c/$token': typeof CTokenRoute
+  '/care/$childId': typeof CareChildIdRouteWithChildren
+  '/children/new': typeof ChildrenNewRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/tools/feeding-calculator': typeof ToolsFeedingCalculatorRoute
+  '/guides/': typeof GuidesIndexRoute
+  '/care/$childId/qr': typeof CareChildIdQrRoute
+  '/children/$childId/edit': typeof ChildrenChildIdEditRoute
+  '/children/$childId/medications': typeof ChildrenChildIdMedicationsRoute
+  '/api/public/hooks/weekly-guide': typeof ApiPublicHooksWeeklyGuideRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/llms.txt': typeof LlmsDottxtRoute
+  '/onboarding': typeof OnboardingRoute
+  '/premium': typeof PremiumRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/refunds': typeof RefundsRoute
+  '/reminders': typeof RemindersRoute
+  '/settings': typeof SettingsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/talk-about-your-child': typeof TalkAboutYourChildRoute
+  '/templates': typeof TemplatesRoute
+  '/terms': typeof TermsRoute
+  '/c/$token': typeof CTokenRoute
+  '/care/$childId': typeof CareChildIdRouteWithChildren
+  '/children/new': typeof ChildrenNewRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/tools/feeding-calculator': typeof ToolsFeedingCalculatorRoute
+  '/guides': typeof GuidesIndexRoute
+  '/care/$childId/qr': typeof CareChildIdQrRoute
+  '/children/$childId/edit': typeof ChildrenChildIdEditRoute
+  '/children/$childId/medications': typeof ChildrenChildIdMedicationsRoute
+  '/api/public/hooks/weekly-guide': typeof ApiPublicHooksWeeklyGuideRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/llms.txt': typeof LlmsDottxtRoute
+  '/onboarding': typeof OnboardingRoute
+  '/premium': typeof PremiumRoute
+  '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/refunds': typeof RefundsRoute
+  '/reminders': typeof RemindersRoute
+  '/settings': typeof SettingsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/talk-about-your-child': typeof TalkAboutYourChildRoute
+  '/templates': typeof TemplatesRoute
+  '/terms': typeof TermsRoute
+  '/c/$token': typeof CTokenRoute
+  '/care/$childId': typeof CareChildIdRouteWithChildren
+  '/children/new': typeof ChildrenNewRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/tools/feeding-calculator': typeof ToolsFeedingCalculatorRoute
+  '/guides/': typeof GuidesIndexRoute
+  '/care/$childId/qr': typeof CareChildIdQrRoute
+  '/children/$childId/edit': typeof ChildrenChildIdEditRoute
+  '/children/$childId/medications': typeof ChildrenChildIdMedicationsRoute
+  '/api/public/hooks/weekly-guide': typeof ApiPublicHooksWeeklyGuideRoute
+  '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/auth'
+    | '/contact'
+    | '/llms.txt'
+    | '/onboarding'
+    | '/premium'
+    | '/pricing'
+    | '/privacy'
+    | '/refunds'
+    | '/reminders'
+    | '/settings'
+    | '/sitemap.xml'
+    | '/talk-about-your-child'
+    | '/templates'
+    | '/terms'
+    | '/c/$token'
+    | '/care/$childId'
+    | '/children/new'
+    | '/guides/$slug'
+    | '/tools/feeding-calculator'
+    | '/guides/'
+    | '/care/$childId/qr'
+    | '/children/$childId/edit'
+    | '/children/$childId/medications'
+    | '/api/public/hooks/weekly-guide'
+    | '/api/public/payments/webhook'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/auth'
+    | '/contact'
+    | '/llms.txt'
+    | '/onboarding'
+    | '/premium'
+    | '/pricing'
+    | '/privacy'
+    | '/refunds'
+    | '/reminders'
+    | '/settings'
+    | '/sitemap.xml'
+    | '/talk-about-your-child'
+    | '/templates'
+    | '/terms'
+    | '/c/$token'
+    | '/care/$childId'
+    | '/children/new'
+    | '/guides/$slug'
+    | '/tools/feeding-calculator'
+    | '/guides'
+    | '/care/$childId/qr'
+    | '/children/$childId/edit'
+    | '/children/$childId/medications'
+    | '/api/public/hooks/weekly-guide'
+    | '/api/public/payments/webhook'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/auth'
+    | '/contact'
+    | '/llms.txt'
+    | '/onboarding'
+    | '/premium'
+    | '/pricing'
+    | '/privacy'
+    | '/refunds'
+    | '/reminders'
+    | '/settings'
+    | '/sitemap.xml'
+    | '/talk-about-your-child'
+    | '/templates'
+    | '/terms'
+    | '/c/$token'
+    | '/care/$childId'
+    | '/children/new'
+    | '/guides/$slug'
+    | '/tools/feeding-calculator'
+    | '/guides/'
+    | '/care/$childId/qr'
+    | '/children/$childId/edit'
+    | '/children/$childId/medications'
+    | '/api/public/hooks/weekly-guide'
+    | '/api/public/payments/webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
+  ContactRoute: typeof ContactRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
+  OnboardingRoute: typeof OnboardingRoute
+  PremiumRoute: typeof PremiumRoute
+  PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
+  RefundsRoute: typeof RefundsRoute
+  RemindersRoute: typeof RemindersRoute
+  SettingsRoute: typeof SettingsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TalkAboutYourChildRoute: typeof TalkAboutYourChildRoute
+  TemplatesRoute: typeof TemplatesRoute
+  TermsRoute: typeof TermsRoute
+  CTokenRoute: typeof CTokenRoute
+  CareChildIdRoute: typeof CareChildIdRouteWithChildren
+  ChildrenNewRoute: typeof ChildrenNewRoute
+  GuidesSlugRoute: typeof GuidesSlugRoute
+  ToolsFeedingCalculatorRoute: typeof ToolsFeedingCalculatorRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
+  ChildrenChildIdEditRoute: typeof ChildrenChildIdEditRoute
+  ChildrenChildIdMedicationsRoute: typeof ChildrenChildIdMedicationsRoute
+  ApiPublicHooksWeeklyGuideRoute: typeof ApiPublicHooksWeeklyGuideRoute
+  ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +392,230 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/premium': {
+      id: '/premium'
+      path: '/premium'
+      fullPath: '/premium'
+      preLoaderRoute: typeof PremiumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refunds': {
+      id: '/refunds'
+      path: '/refunds'
+      fullPath: '/refunds'
+      preLoaderRoute: typeof RefundsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reminders': {
+      id: '/reminders'
+      path: '/reminders'
+      fullPath: '/reminders'
+      preLoaderRoute: typeof RemindersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/talk-about-your-child': {
+      id: '/talk-about-your-child'
+      path: '/talk-about-your-child'
+      fullPath: '/talk-about-your-child'
+      preLoaderRoute: typeof TalkAboutYourChildRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/templates': {
+      id: '/templates'
+      path: '/templates'
+      fullPath: '/templates'
+      preLoaderRoute: typeof TemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/c/$token': {
+      id: '/c/$token'
+      path: '/c/$token'
+      fullPath: '/c/$token'
+      preLoaderRoute: typeof CTokenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/care/$childId': {
+      id: '/care/$childId'
+      path: '/care/$childId'
+      fullPath: '/care/$childId'
+      preLoaderRoute: typeof CareChildIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/children/new': {
+      id: '/children/new'
+      path: '/children/new'
+      fullPath: '/children/new'
+      preLoaderRoute: typeof ChildrenNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/': {
+      id: '/guides/'
+      path: '/guides'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/guides/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/feeding-calculator': {
+      id: '/tools/feeding-calculator'
+      path: '/tools/feeding-calculator'
+      fullPath: '/tools/feeding-calculator'
+      preLoaderRoute: typeof ToolsFeedingCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/care/$childId/qr': {
+      id: '/care/$childId/qr'
+      path: '/qr'
+      fullPath: '/care/$childId/qr'
+      preLoaderRoute: typeof CareChildIdQrRouteImport
+      parentRoute: typeof CareChildIdRoute
+    }
+    '/children/$childId/edit': {
+      id: '/children/$childId/edit'
+      path: '/children/$childId/edit'
+      fullPath: '/children/$childId/edit'
+      preLoaderRoute: typeof ChildrenChildIdEditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/children/$childId/medications': {
+      id: '/children/$childId/medications'
+      path: '/children/$childId/medications'
+      fullPath: '/children/$childId/medications'
+      preLoaderRoute: typeof ChildrenChildIdMedicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/hooks/weekly-guide': {
+      id: '/api/public/hooks/weekly-guide'
+      path: '/api/public/hooks/weekly-guide'
+      fullPath: '/api/public/hooks/weekly-guide'
+      preLoaderRoute: typeof ApiPublicHooksWeeklyGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/payments/webhook': {
+      id: '/api/public/payments/webhook'
+      path: '/api/public/payments/webhook'
+      fullPath: '/api/public/payments/webhook'
+      preLoaderRoute: typeof ApiPublicPaymentsWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface CareChildIdRouteChildren {
+  CareChildIdQrRoute: typeof CareChildIdQrRoute
+}
+
+const CareChildIdRouteChildren: CareChildIdRouteChildren = {
+  CareChildIdQrRoute: CareChildIdQrRoute,
+}
+
+const CareChildIdRouteWithChildren = CareChildIdRoute._addFileChildren(
+  CareChildIdRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
+  ContactRoute: ContactRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
+  OnboardingRoute: OnboardingRoute,
+  PremiumRoute: PremiumRoute,
+  PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
+  RefundsRoute: RefundsRoute,
+  RemindersRoute: RemindersRoute,
+  SettingsRoute: SettingsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TalkAboutYourChildRoute: TalkAboutYourChildRoute,
+  TemplatesRoute: TemplatesRoute,
+  TermsRoute: TermsRoute,
+  CTokenRoute: CTokenRoute,
+  CareChildIdRoute: CareChildIdRouteWithChildren,
+  ChildrenNewRoute: ChildrenNewRoute,
+  GuidesSlugRoute: GuidesSlugRoute,
+  ToolsFeedingCalculatorRoute: ToolsFeedingCalculatorRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
+  ChildrenChildIdEditRoute: ChildrenChildIdEditRoute,
+  ChildrenChildIdMedicationsRoute: ChildrenChildIdMedicationsRoute,
+  ApiPublicHooksWeeklyGuideRoute: ApiPublicHooksWeeklyGuideRoute,
+  ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

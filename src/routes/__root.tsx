@@ -11,6 +11,12 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Toaster } from "@/components/ui/sonner";
+import { BackupRunner } from "@/features/backup/backup-runner";
+import { CareStoreProvider } from "@/features/children/hooks/use-care-store";
+
+import { useReminderScheduler } from "@/features/reminders/hooks/use-reminder-scheduler";
+import { jsonLdScript, organizationLd, websiteLd } from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -77,21 +83,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Baby Care Cards — Care instructions your sitter can follow" },
+      {
+        name: "description",
+        content:
+          "Create a complete care card for your child in two minutes. Feeding, routine, medication, emergency and pediatrician info — ready to share, print or scan.",
+      },
+      { property: "og:title", content: "Baby Care Cards" },
+      {
+        property: "og:description",
+        content: "Leaving your child with someone? Give them everything they need to know.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    scripts: [
+      jsonLdScript({
+        "@context": "https://schema.org",
+        "@graph": [organizationLd, websiteLd],
+      }),
     ],
   }),
   shellComponent: RootShell,
@@ -114,13 +134,25 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function ReminderRunner() {
+  useReminderScheduler();
+  return null;
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <CareStoreProvider>
+        <ReminderRunner />
+        <BackupRunner />
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+        <Toaster position="top-center" richColors />
+      </CareStoreProvider>
     </QueryClientProvider>
+
   );
 }
+
