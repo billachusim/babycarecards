@@ -129,7 +129,7 @@ function NewChild() {
             setName(v);
             setError(undefined);
           }}
-          placeholder="e.g. Luna"
+          placeholder="e.g. Mia"
           error={error}
         />
 
