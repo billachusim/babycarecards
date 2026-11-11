@@ -36,6 +36,7 @@ import { Route as ChildrenChildIdEditRouteImport } from './routes/children.$chil
 import { Route as ChildrenChildIdMedicationsRouteImport } from './routes/children.$childId.medications'
 import { Route as ApiPublicHooksWeeklyGuideRouteImport } from './routes/api/public/hooks/weekly-guide'
 import { Route as ApiPublicPaymentsWebhookRouteImport } from './routes/api/public/payments/webhook'
+import { Route as ApiPublicVoiceParseRouteImport } from './routes/api/public/voice/parse'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -175,6 +176,11 @@ const ApiPublicPaymentsWebhookRoute =
     path: '/api/public/payments/webhook',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicVoiceParseRoute = ApiPublicVoiceParseRouteImport.update({
+  id: '/api/public/voice/parse',
+  path: '/api/public/voice/parse',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -204,6 +210,7 @@ export interface FileRoutesByFullPath {
   '/children/$childId/medications': typeof ChildrenChildIdMedicationsRoute
   '/api/public/hooks/weekly-guide': typeof ApiPublicHooksWeeklyGuideRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
+  '/api/public/voice/parse': typeof ApiPublicVoiceParseRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -233,6 +240,7 @@ export interface FileRoutesByTo {
   '/children/$childId/medications': typeof ChildrenChildIdMedicationsRoute
   '/api/public/hooks/weekly-guide': typeof ApiPublicHooksWeeklyGuideRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
+  '/api/public/voice/parse': typeof ApiPublicVoiceParseRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -263,6 +271,7 @@ export interface FileRoutesById {
   '/children/$childId/medications': typeof ChildrenChildIdMedicationsRoute
   '/api/public/hooks/weekly-guide': typeof ApiPublicHooksWeeklyGuideRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
+  '/api/public/voice/parse': typeof ApiPublicVoiceParseRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -294,6 +303,7 @@ export interface FileRouteTypes {
     | '/children/$childId/medications'
     | '/api/public/hooks/weekly-guide'
     | '/api/public/payments/webhook'
+    | '/api/public/voice/parse'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -323,6 +333,7 @@ export interface FileRouteTypes {
     | '/children/$childId/medications'
     | '/api/public/hooks/weekly-guide'
     | '/api/public/payments/webhook'
+    | '/api/public/voice/parse'
   id:
     | '__root__'
     | '/'
@@ -352,6 +363,7 @@ export interface FileRouteTypes {
     | '/children/$childId/medications'
     | '/api/public/hooks/weekly-guide'
     | '/api/public/payments/webhook'
+    | '/api/public/voice/parse'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -381,6 +393,7 @@ export interface RootRouteChildren {
   ChildrenChildIdMedicationsRoute: typeof ChildrenChildIdMedicationsRoute
   ApiPublicHooksWeeklyGuideRoute: typeof ApiPublicHooksWeeklyGuideRoute
   ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
+  ApiPublicVoiceParseRoute: typeof ApiPublicVoiceParseRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -574,6 +587,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicPaymentsWebhookRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/voice/parse': {
+      id: '/api/public/voice/parse'
+      path: '/api/public/voice/parse'
+      fullPath: '/api/public/voice/parse'
+      preLoaderRoute: typeof ApiPublicVoiceParseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -616,6 +636,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChildrenChildIdMedicationsRoute: ChildrenChildIdMedicationsRoute,
   ApiPublicHooksWeeklyGuideRoute: ApiPublicHooksWeeklyGuideRoute,
   ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,
+  ApiPublicVoiceParseRoute: ApiPublicVoiceParseRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
